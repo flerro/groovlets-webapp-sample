@@ -5,7 +5,8 @@
 
 def name = params.name ?: "World"
 
-// output some html
+// Output some html using the
+// built-in Markup builder
 
 html.html {
     head {

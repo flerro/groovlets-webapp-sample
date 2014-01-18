@@ -17,21 +17,24 @@ import groovy.json.JsonSlurper
 response.contentType = 'application/json'
 
 try {
-    // Access headers, with context bound variable
+    response.contentType = 'application/json'
 
+    // Access headers, with context bound variable
     if (headers['Content-Type'] != "application/json") {
         throw new RuntimeException("Please use 'application/json' header")
     }
 
+    // Get content from POST body
     def jsonContent = request.reader.text
 
+    // Parse JSON to Map
     def content = null
     if (jsonContent) {
         content = new JsonSlurper()
-                    .parseText(jsonContent)
+                .parseText(jsonContent)
     }
 
-    // output some JSON
+    // build JSON output
     json."echo" {
         "original" content
     }
